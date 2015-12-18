@@ -7,11 +7,11 @@
     "build": "npm run clean && npm run build-js",
     "build-js": "mkdir -p dist && browserify index.js --standalone=resizabull > dist/resizabull.js",
     "clean": "rm -rf dist",
-    "coverage": "istanbul cover test/*.js",
+    "coverage": "istanbul cover test/index.js",
     "coveralls": "npm run coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "lint": "jshint .",
     "tdd": "nodemon -q -x 'npm test'",
-    "test": "tape test/*.js | tap-spec",
+    "test": "tape test/*.test.js | tap-spec",
     "validate": "npm run lint && npm test && npm run coveralls"
   },
   "repository": {
