@@ -2,11 +2,21 @@
 
 var test = require('tape');
 var sinon = require('sinon');
+var resizeCursor = require('resize-cursors');
 var Store = require('../lib/store');
 var helpers = require('../lib/helpers');
 var createEl = require('./spec_util').createEl;
 var getCursorState = helpers.getCursorState;
-var cursorStyle = helpers.cursorStyle;
+
+function cursorStyle(state) {
+    state = state || {};
+    return resizeCursor({
+        top: state.onTopEdge,
+        right: state.onRightEdge,
+        bottom: state.onBottomEdge,
+        left: state.onLeftEdge
+    });
+}
 
 function getEnv() {
     return {
@@ -170,8 +180,11 @@ test('render', function(t) {
             'should not apply styles when shouldRedraw is false');
 
     subject.shouldRedraw = true;
+    resizer.grab = {
+        onRightEdge: true
+    };
     subject.render();
-    t.equal(resizer.el.style.cursor, cursorStyle(resizer),
+    t.equal(resizer.el.style.cursor, cursorStyle(resizer.grab),
             'should apply styles when shouldRedraw is true');
     t.equal(subject.shouldRender, false, 'redraw should reset shouldRedraw');
 

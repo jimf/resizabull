@@ -39,6 +39,7 @@
     "tape": "^4.0.0"
   },
   "dependencies": {
-    "object-assign": "^4.0.1"
+    "object-assign": "^4.0.1",
+    "resize-cursors": "^1.0.0"
   }
 }
