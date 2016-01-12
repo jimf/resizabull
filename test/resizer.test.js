@@ -9,7 +9,7 @@ test('new resizer instance', function(t) {
     var subject = new Resizer(el);
 
     t.equal(subject.el, el);
-    t.equal(subject.treshold, 5);
+    t.equal(subject.threshold, 5);
     t.equal(subject.x, null);
     t.equal(subject.y, null);
     t.equal(subject.grab, null);
@@ -23,10 +23,10 @@ test('new resizer instance', function(t) {
 
 test('options', function(t) {
     var el = createEl();
-    var options = { treshold: '10' };
+    var options = { threshold: '10' };
     var subject = new Resizer(el, options);
 
-    t.equal(subject.treshold, Number(options.treshold));
+    t.equal(subject.threshold, Number(options.threshold));
     t.end();
 });
 
