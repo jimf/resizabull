@@ -99,9 +99,9 @@ test('onMove', function(t) {
                      el: createEl({ t: 400, l: 0 }) };
 
     var expectedState1 = getCursorState(
-        e, resizer1.el.getBoundingClientRect(), resizer1.treshold);
+        e, resizer1.el.getBoundingClientRect(), resizer1.threshold);
     var expectedState2 = getCursorState(
-        e, resizer2.el.getBoundingClientRect(), resizer2.treshold);
+        e, resizer2.el.getBoundingClientRect(), resizer2.threshold);
 
     subject.add(resizer1);
     subject.add(resizer2);

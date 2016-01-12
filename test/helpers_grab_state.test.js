@@ -10,8 +10,8 @@ test('getCursorState', function(t) {
         cursor.clientY = cursor.y || 0;
 
         var rect = { width: 200, height: 200, top: 0, left: 0 };
-        var treshold = 5;
-        var actual = getGrabState(cursor, rect, treshold);
+        var threshold = 5;
+        var actual = getGrabState(cursor, rect, threshold);
 
         t.deepEqual(actual, expected);
     }
