@@ -17,7 +17,50 @@ Install using npm:
 
 ## Usage
 
+```js
+var resizabull = require('resizabull'),
+    element = document.getElementById('resize-me'),
+    resizer = resizabull(element);
+```
+
 ## Available Options
+
+#### `options.onResizeStart(resizer)`
+
+Callback fired when a resize event has begun, receiving the `resizer` instance
+itself as an argument.
+
+#### `options.onResize(resizer)`
+
+Callback fired when a resize has started and an edge has been moved, receiving
+the `resizer` instance itself as an argument.
+
+#### `options.onResizeStop(resizer)`
+
+Callback fired when a resize event has ended, receiving the `resizer` instance
+itself as an argument.
+
+#### `options.threshold` (default: 5)
+
+Tolerance, in pixels, for how far the mouse cursor may be from the edge of a
+resizable element before the edge becomes draggable.
+
+## Methods
+
+The `resizabull` method returns a "resizer" instance with a number of methods:
+
+#### `resizer#bindEvents()`
+
+Method to add needed event listeners associated with the given __resizabull__
+instance to the DOM.
+
+NOTE: This method does not need to be called on newly instantiated resizers;
+this is done automatically.
+
+#### `resizer#unbindEvents()`
+
+Method to remove all event listeners associated with the given __resizabull__
+instance from the DOM.
 
 ## License
 
