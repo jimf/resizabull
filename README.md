@@ -45,6 +45,15 @@ itself as an argument.
 Tolerance, in pixels, for how far the mouse cursor may be from the edge of a
 resizable element before the edge becomes draggable.
 
+#### `options.minDims` (default: { x:0, y:0 })
+
+Minimum allowed dimensions to resize to. Both `x` and `y` must be specified.
+
+#### `options.maxDims`
+#### (default: { x: Number.MAX_SAFE_INTEGER, y: Number.MAX_SAFE_INTEGER })
+
+Maximum allowed dimensions to resize to. Both `x` and `y` must be specified.
+
 ## Methods
 
 The `resizabull` method returns a "resizer" instance with a number of methods:
