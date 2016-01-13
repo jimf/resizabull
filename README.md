@@ -45,6 +45,22 @@ itself as an argument.
 Tolerance, in pixels, for how far the mouse cursor may be from the edge of a
 resizable element before the edge becomes draggable.
 
+#### `options.minWidth` (default: 1)
+
+Minimum allowed width
+
+#### `options.maxWidth` (default: Infinity)
+
+Maximum allowed width
+
+#### `options.minHeight` (default: 1)
+
+Minimum allowed height
+
+#### `options.maxHeight` (default: Infinity)
+
+Maximum allowed height
+
 ## Methods
 
 The `resizabull` method returns a "resizer" instance with a number of methods:
