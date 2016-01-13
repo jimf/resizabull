@@ -94,9 +94,11 @@ test('onMove', function(t) {
     var subject = new Store(getEnv());
     var e = { clientX: 10, clientY: 10 };
     var resizer1 = { threshold: 5,
-                     el: createEl({ t: 10, l: 10 }) };
+                     el: createEl({ t: 10, l: 10 }),
+                     onResize: sinon.stub() };
     var resizer2 = { threshold: 4,
-                     el: createEl({ t: 400, l: 0 }) };
+                     el: createEl({ t: 400, l: 0 }),
+                     onResize: sinon.stub() };
 
     var expectedState1 = getCursorState(
         e, resizer1.el.getBoundingClientRect(), resizer1.threshold);
@@ -113,6 +115,8 @@ test('onMove', function(t) {
         t.equal(resizer2[prop], expectedState2[prop]);
     });
     t.equal(subject.shouldRedraw, true, 'should trigger redraw');
+    t.ok(resizer1.onResize.calledWith(resizer1), 'should call onResize');
+    t.ok(resizer2.onResize.calledWith(resizer2), 'should call onResize');
 
     t.end();
 });
@@ -121,7 +125,8 @@ test('onUp', function(t) {
     var subject = new Store(getEnv());
     var e = { clientX: 400, clientY: 400 };
     var resizer = { threshold: 5,
-                    el: createEl({ t: 10, l: 10 }) };
+                    el: createEl({ t: 10, l: 10 }),
+                    onResizeStop: sinon.stub() };
 
     resizer.grab = {};
 
@@ -133,6 +138,7 @@ test('onUp', function(t) {
             t.ok(resizer[prop] !== undefined);
         });
     t.equal(resizer.grab, null);
+    t.ok(resizer.onResizeStop.calledWith(resizer), 'should call onResizeStop');
 
     t.end();
 });
