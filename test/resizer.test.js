@@ -1,6 +1,7 @@
 'use strict';
 
 var test = require('tape');
+var sinon = require('sinon');
 var Resizer = require('../lib/resizer');
 var createEl = require('./spec_util').createEl;
 
@@ -18,6 +19,9 @@ test('new resizer instance', function(t) {
     t.equal(subject.onRightEdge, false);
     t.equal(subject.onBottomEdge, false);
     t.equal(subject.onLeftEdge, false);
+    t.ok(typeof subject.onResizeStart === 'function');
+    t.ok(typeof subject.onResize === 'function');
+    t.ok(typeof subject.onResizeStop === 'function');
     t.end();
 });
 
@@ -59,10 +63,12 @@ test('onDown', function(t) {
         var subject = new Resizer(createEl());
         var e = { clientX: opts.x || 0, clientY: opts.y || 0 };
 
+        sinon.stub(subject, 'onResizeStart');
         subject.onDown(e);
 
         t.equal(subject.isResizing, expected, msg);
         t.ok(subject.grab);
+        t.ok(subject.onResizeStart.calledWith(subject));
     }
 
     testcase({ x:  50, y:  50 }, false, 'isResizing false when not on edge');
