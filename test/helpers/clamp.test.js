@@ -1,73 +1,42 @@
 'use strict';
 
 var test = require('tape');
-var clampDimension = require('../../lib/helpers').clampDimension;
+var helpers = require('../../lib/helpers');
+var clampWidth = helpers.clampWidth;
+var clampHeight = helpers.clampHeight;
 
-test('helpers.clampDimension()', function(t) {
-    function testcase(resizer, dimension, val, expected, msg) {
-        var actual = clampDimension(resizer, dimension, val);
+test('helpers.clampWidth()', function(t) {
+    function testcase(resizer, expected, msg) {
+        var actual = clampWidth(resizer);
         t.equal(actual, expected, msg);
     }
 
-    // Height too large
-    testcase({
-        x: 120,
-        y: 400,
-        maxWidth: 100,
-        maxHeight: 200,
-        minWidth: 1,
-        minHeight: 1
-    }, 'Height', null, 200, 'should clamp to maxHeight');
+    testcase({ x: 120, minWidth: 1, maxWidth: 100 }, 100,
+             'should clamp width value when > maxWidth');
 
-    // Height too small
-    testcase({
-        x: 120,
-        y: 3,
-        maxWidth: 100,
-        maxHeight: 200,
-        minWidth: 1,
-        minHeight: 10
-    }, 'Height', null, 10, 'should clamp to minHeight');
+    testcase({ x: 1, minWidth: 20, maxWidth: 100 }, 20,
+             'should clamp width value when < minWidth');
 
-    // Width too large
-    testcase({
-        x: 120,
-        y: 120,
-        maxWidth: 100,
-        maxHeight: 200,
-        minWidth: 1,
-        minHeight: 1
-    }, 'Width', null, 100, 'should clamp to maxWidth');
+    testcase({ x: 20, minWidth: 1, maxWidth: 100 }, 20,
+             'should use width value when between min and max');
 
-    // Width too small
-    testcase({
-        x: 1,
-        y: 120,
-        maxWidth: 100,
-        maxHeight: 200,
-        minWidth: 20,
-        minHeight: 1
-    }, 'Width', null, 20, 'should clamp to minWidth');
+    t.end();
+});
 
-    // Specified value, ignores actual value
-    testcase({
-        x: 20,
-        y: 120,
-        maxWidth: 100,
-        maxHeight: 200,
-        minWidth: 1,
-        minHeight: 1
-    }, 'Width', 120, 100, 'should clamp to maxWidth');
+test('helpers.clampHeight()', function(t) {
+    function testcase(resizer, expected, msg) {
+        var actual = clampHeight(resizer);
+        t.equal(actual, expected, msg);
+    }
 
-    // Specified value, ignores actual value
-    testcase({
-        x: 20,
-        y: 120,
-        maxWidth: 100,
-        maxHeight: 200,
-        minWidth: 1,
-        minHeight: 1
-    }, null, 120, 100, 'should clamp to maxWidth');
+    testcase({ y: 120, minHeight: 1, maxHeight: 100 }, 100,
+             'should clamp width value when > maxHeight');
+
+    testcase({ y: 1, minHeight: 20, maxHeight: 100 }, 20,
+             'should clamp width value when < minHeight');
+
+    testcase({ y: 20, minHeight: 1, maxHeight: 100 }, 20,
+             'should use width value when between min and max');
 
     t.end();
 });
