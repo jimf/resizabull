@@ -15,7 +15,7 @@ function cursorStyle(state) {
         right: state.onRightEdge,
         bottom: state.onBottomEdge,
         left: state.onLeftEdge
-    });
+    }) || '';
 }
 
 function getEnv() {
@@ -191,6 +191,7 @@ test('Store#render()', function(t) {
             'should not apply styles when grab state is null');
 
     resizer.grab = {};
+    subject.shouldRedraw = true;
     subject.render();
     t.equal(resizer.el.style.cursor, '',
             'should not apply styles when grab state is not resizing');
@@ -199,10 +200,11 @@ test('Store#render()', function(t) {
         onRightEdge: true,
         onBottomEdge: true
     };
+    subject.shouldRedraw = true;
     subject.render();
     t.equal(resizer.el.style.cursor, cursorStyle(resizer.grab),
             'should apply styles when shouldRedraw is true');
-    t.equal(subject.shouldRender, false, 'redraw should reset shouldRedraw');
+    t.equal(subject.shouldRedraw, false, 'redraw should reset shouldRedraw');
 
     t.end();
 });
