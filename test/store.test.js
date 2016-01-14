@@ -186,8 +186,18 @@ test('Store#render()', function(t) {
             'should not apply styles when shouldRedraw is false');
 
     subject.shouldRedraw = true;
+    subject.render();
+    t.equal(resizer.el.style.cursor, '',
+            'should not apply styles when grab state is null');
+
+    resizer.grab = {};
+    subject.render();
+    t.equal(resizer.el.style.cursor, '',
+            'should not apply styles when grab state is not resizing');
+
     resizer.grab = {
-        onRightEdge: true
+        onRightEdge: true,
+        onBottomEdge: true
     };
     subject.render();
     t.equal(resizer.el.style.cursor, cursorStyle(resizer.grab),
