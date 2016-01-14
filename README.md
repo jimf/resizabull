@@ -61,6 +61,11 @@ Minimum allowed height
 
 Maximum allowed height
 
+#### `options.aspectRatio` (default: false)
+
+Enforce an aspect ratio. A value of `true` enforces the element's original
+ratio, any other value will enforce that value.
+
 ## Methods
 
 The `resizabull` method returns a "resizer" instance with a number of methods:
