@@ -1,7 +1,7 @@
 'use strict';
 
 var test = require('tape');
-var getCursorState = require('../lib/helpers').getCursorState;
+var getCursorState = require('../../lib/helpers').getCursorState;
 
 function subject(cursor) {
     return getCursorState(

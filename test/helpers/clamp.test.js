@@ -1,7 +1,7 @@
 'use strict';
 
 var test = require('tape');
-var clampDimension = require('../lib/helpers').clampDimension;
+var clampDimension = require('../../lib/helpers').clampDimension;
 
 test('clampDimension', function(t) {
     function testcase(resizer, dimension, val, expected, msg) {
