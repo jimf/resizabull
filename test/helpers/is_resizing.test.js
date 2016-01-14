@@ -1,9 +1,9 @@
 'use strict';
 
 var test = require('tape');
-var isResizing = require('../lib/helpers').isResizing;
+var isResizing = require('../../lib/helpers').isResizing;
 
-test('isResizing', function(t) {
+test('helpers.isResizing()', function(t) {
     function testcase(opts, expected) {
         opts = opts || {};
         var state = {

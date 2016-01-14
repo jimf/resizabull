@@ -28,7 +28,7 @@ function getEnv() {
     };
 }
 
-test('new store instance', function(t) {
+test('new Store()', function(t) {
     var env = getEnv();
     var subject = new Store(env);
 
@@ -39,7 +39,7 @@ test('new store instance', function(t) {
     t.end();
 });
 
-test('add resizer', function(t) {
+test('Store#add()', function(t) {
     var subject = new Store(getEnv());
     var resizer = {};
 
@@ -49,7 +49,7 @@ test('add resizer', function(t) {
     t.end();
 });
 
-test('remove resizer', function(t) {
+test('Store#remove()', function(t) {
     var subject = new Store(getEnv());
     var resizer = {};
     var resizerToRemove = {};
@@ -64,7 +64,7 @@ test('remove resizer', function(t) {
     t.end();
 });
 
-test('bind events', function(t) {
+test('Store#bindEvents()', function(t) {
     var subject = new Store(getEnv());
     var doc = subject.document;
 
@@ -77,7 +77,7 @@ test('bind events', function(t) {
     t.end();
 });
 
-test('unbind events', function(t) {
+test('Store#unbindEvents()', function(t) {
     var subject = new Store(getEnv());
     var doc = subject.document;
 
@@ -90,7 +90,7 @@ test('unbind events', function(t) {
     t.end();
 });
 
-test('onMove', function(t) {
+test('Store#onMove()', function(t) {
     var subject = new Store(getEnv());
     var e = { clientX: 10, clientY: 10 };
     var resizer1 = { threshold: 5,
@@ -121,7 +121,7 @@ test('onMove', function(t) {
     t.end();
 });
 
-test('onUp', function(t) {
+test('Store#onUp()', function(t) {
     var subject = new Store(getEnv());
     var e = { clientX: 400, clientY: 400 };
     var resizer = { threshold: 5,
@@ -143,7 +143,7 @@ test('onUp', function(t) {
     t.end();
 });
 
-test('onTouchMove', function(t) {
+test('Store#onTouchMove()', function(t) {
     var subject = new Store(getEnv());
     var e = { touches: [{ clientX: 0, clientY: 10 }] };
 
@@ -153,7 +153,7 @@ test('onTouchMove', function(t) {
     t.end();
 });
 
-test('onTouchEnd', function(t) {
+test('Store#onTouchEnd()', function(t) {
     var subject = new Store(getEnv());
     var e = { touches: [], changedTouches: [{ clientX: 0, clientY: 10 }] };
 
@@ -163,7 +163,7 @@ test('onTouchEnd', function(t) {
     t.end();
 });
 
-test('render', function(t) {
+test('Store#render()', function(t) {
     var subject = new Store(getEnv());
     var win = subject.window;
     var resizer = {

@@ -5,7 +5,7 @@ var sinon = require('sinon');
 var Resizer = require('../lib/resizer');
 var createEl = require('./spec_util').createEl;
 
-test('new resizer instance', function(t) {
+test('new Resizer() with defaults', function(t) {
     var el = createEl();
     var subject = new Resizer(el);
 
@@ -25,7 +25,7 @@ test('new resizer instance', function(t) {
     t.end();
 });
 
-test('options', function(t) {
+test('new Resizer() with options', function(t) {
     var el = createEl();
     var options = { threshold: '10' };
     var subject = new Resizer(el, options);
@@ -34,7 +34,7 @@ test('options', function(t) {
     t.end();
 });
 
-test('bind events', function(t) {
+test('Resizer#bindEvents()', function(t) {
     var subject = new Resizer(createEl());
     var el = subject.el;
 
@@ -45,7 +45,7 @@ test('bind events', function(t) {
     t.end();
 });
 
-test('unbind events', function(t) {
+test('Resizer#unbindEvents()', function(t) {
     var subject = new Resizer(createEl());
     var el = subject.el;
 
@@ -56,7 +56,7 @@ test('unbind events', function(t) {
     t.end();
 });
 
-test('onDown', function(t) {
+test('Resizer#onDown()', function(t) {
     function testcase(opts, expected, msg) {
         opts = opts || {};
 
@@ -79,7 +79,7 @@ test('onDown', function(t) {
     t.end();
 });
 
-test('onTouchDown', function(t) {
+test('Resizer#onTouchDown()', function(t) {
     function testcase(opts, expected, msg) {
         opts = opts || {};
 

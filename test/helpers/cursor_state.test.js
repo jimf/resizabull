@@ -1,7 +1,7 @@
 'use strict';
 
 var test = require('tape');
-var getCursorState = require('../lib/helpers').getCursorState;
+var getCursorState = require('../../lib/helpers').getCursorState;
 
 function subject(cursor) {
     return getCursorState(
@@ -15,7 +15,7 @@ function cursor(x, y) {
     return { clientX: x, clientY: y };
 }
 
-test('onTopEdge', function(t) {
+test('helpers.getCursorState() onTopEdge', function(t) {
     var cases = [
         { input:    cursor(10, 10),
           expected: 'ok',
@@ -44,7 +44,7 @@ test('onTopEdge', function(t) {
     t.end();
 });
 
-test('onRightEdge', function(t) {
+test('helpers.getCursorState() onRightEdge', function(t) {
     var cases = [
         { input:    cursor(210, 10),
           expected: 'ok',
@@ -73,7 +73,7 @@ test('onRightEdge', function(t) {
     t.end();
 });
 
-test('onBottomEdge', function(t) {
+test('helpers.getCursorState() onBottomEdge', function(t) {
     var cases = [
         { input:    cursor(10, 210),
           expected: 'ok',
@@ -102,7 +102,7 @@ test('onBottomEdge', function(t) {
     t.end();
 });
 
-test('onLeftEdge', function(t) {
+test('helpers.getCursorState() onLeftEdge', function(t) {
     var cases = [
         { input:    cursor(10, 10),
           expected: 'ok',

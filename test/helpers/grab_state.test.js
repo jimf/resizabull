@@ -1,9 +1,9 @@
 'use strict';
 
 var test = require('tape');
-var getGrabState = require('../lib/helpers').getGrabState;
+var getGrabState = require('../../lib/helpers').getGrabState;
 
-test('getCursorState', function(t) {
+test('helpers.getCursorState()', function(t) {
     function testcase(cursor, expected) {
         cursor = cursor || {};
         cursor.clientX = cursor.x || 0;
