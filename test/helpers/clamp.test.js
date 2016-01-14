@@ -3,7 +3,7 @@
 var test = require('tape');
 var clampDimension = require('../../lib/helpers').clampDimension;
 
-test('clampDimension', function(t) {
+test('helpers.clampDimension()', function(t) {
     function testcase(resizer, dimension, val, expected, msg) {
         var actual = clampDimension(resizer, dimension, val);
         t.equal(actual, expected, msg);
