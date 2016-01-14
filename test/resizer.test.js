@@ -34,6 +34,14 @@ test('new Resizer() with options', function(t) {
     t.end();
 });
 
+test('new Resizer with aspectRatio', function(t) {
+    var el = createEl();
+    var options = { aspectRatio: true };
+    var subject = new Resizer(el, options);
+    t.ok(typeof subject.aspectRatio !== 'boolean');
+    t.end();
+});
+
 test('Resizer#bindEvents()', function(t) {
     var subject = new Resizer(createEl());
     var el = subject.el;

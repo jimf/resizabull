@@ -13,7 +13,8 @@ exports.createEl = function(opts) {
                 width: opts.w || 200,
                 height: opts.h || 200,
                 top: opts.t || 0,
-                left: opts.l || 0
+                left: opts.l || 0,
+                aspectRatio: true
             };
         }
     };
